@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+BDA College - {{ request.GET.user|capfirst }} Login
+{% endblock title %}
+
+{% block style %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 50px;
+        text-align: center;
+    }
+
+    .login-container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        margin: auto;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    input[type="text"], input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #2980b9;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease; /* Added transition */
+    }
+
+    button:hover {
+        background-color: #3498db;
+    }
+
+    .error {
+        color: red;
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock style %}
+
+{% block content %}
+<div class="login-container">
+    <h2>{{ request.GET.user|capfirst }} Login</h2>
+
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        
+        <input type="hidden" name="user_type" value="{{ request.GET.user }}">
+        
+        <button type="submit">Login</button>
+    </form>
+</div>
+{% endblock content %}

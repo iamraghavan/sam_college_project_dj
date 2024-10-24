@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+Admin Exam Applications
+{% endblock title %}
+
+{% block style %}
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 20px; /* Added padding for breathing space */
+    }
+    h2 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 15px;
+        font-size: 1.4em; /* Smaller font size */
+        font-weight: 600;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 10px;
+    }
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+    th, td {
+        padding: 8px; /* Reduced padding */
+        text-align: left;
+        font-size: 0.85em; /* Smaller font size */
+    }
+    th {
+        background-color: #007bff;
+        color: white;
+        text-transform: uppercase;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    tr:hover {
+        background-color: #e9ecef;
+    }
+    .status {
+        display: inline-block;
+        padding: 4px 8px; /* Reduced padding */
+        font-weight: 600;
+        text-align: center;
+        border-radius: 4px;
+        font-size: 0.8em; /* Smaller font size */
+    }
+    .status.approved {
+        background-color: #28a745;
+        color: white;
+    }
+    .status.pending {
+        background-color: #ffc107;
+        color: white;
+    }
+    .status.rejected {
+        background-color: #dc3545;
+        color: white;
+    }
+    @media (max-width: 768px) {
+        table, th, td {
+            font-size: 0.75em; /* Adjusted for smaller screens */
+        }
+        h2 {
+            font-size: 1.2em; /* Smaller heading for smaller screens */
+        }
+    }
+</style>
+{% endblock style %}
+
+{% block content %}
+<h2>Exam Applications</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Student Name</th>
+            <th>Register No</th>
+            <th>Exam Name</th>
+            <th>Subject</th>
+            <th>Exam Date</th>
+            <th>Semester</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Loop through applications from the backend -->
+        {% for application in exam_applications %}
+        <tr>
+            <td>{{ application.student.name }}</td>
+            <td>{{ application.register_no }}</td>
+            <td>{{ application.exam_name }}</td>
+            <td>{{ application.subject }}</td>
+            <td>{{ application.exam_date }}</td>
+            <td>{{ application.semester }}</td>
+            <td>
+                <span class="status {{ application.status|lower }}">{{ application.status }}</span>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="7" style="text-align:center;">No applications found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

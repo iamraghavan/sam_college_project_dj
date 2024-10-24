@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}View Marks{% endblock %}
+
+{% block content %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+    </style>
+
+    <div class="header">
+        <h1>View Marks</h1>
+    </div>
+
+    <div class="content">
+        <h2>Marks</h2>
+        {% for marks_data in marks %}
+        <label>Subject: </label> <span id="subject-name">{{ marks_data.subject }}</span><br>
+    <label>Assignment Marks: </label> 
+    <span id="assignment-marks">{{ marks_data.assignment_marks_obtained }}</span> / 
+    <span id="assignment-out-of">{{ marks_data.assignment_marks_out_of }}</span><br>
+
+    <label>Presentation Marks: </label> 
+    <span id="presentation-marks">{{ marks_data.presentation_marks_obtained }}</span> / 
+    <span id="presentation-out-of">{{ marks_data.presentation_marks_out_of }}</span><br>
+
+    <label>Project Marks: </label> 
+    <span id="project-marks">{{ marks_data.project_marks_obtained }}</span> / 
+    <span id="project-out-of">{{ marks_data.project_marks_out_of }}</span><br>
+
+    <label>Exam Marks: </label> 
+    <span id="exam-marks">{{ marks_data.exam_marks_obtained }}</span> / 
+    <span id="exam-out-of">{{ marks_data.exam_marks_out_of }}</span><br>
+    
+    <br>
+{% empty %}
+    <p>No marks available.</p>
+{% endfor %}
+    </div>
+
+
+{% endblock %}

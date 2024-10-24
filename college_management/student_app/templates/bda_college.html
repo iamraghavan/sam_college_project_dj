@@ -1,0 +1,220 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+BDA College
+{% endblock title %}
+
+{% block content %}
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <div class="header-title">
+                <h1>Big Data University</h1>
+            </div>
+            <nav class="navbar">
+                <form action="{% url 'student_app:login' %}" method="GET">
+                    <input type="hidden" name="user" value="admin">
+                    <button type="submit" class="button">Admin</button>
+                </form>
+                <form action="{% url 'student_app:login' %}" method="GET">
+                    <input type="hidden" name="user" value="student">
+                    <button type="submit" class="button">Student</button>
+                </form>
+                <form action="{% url 'student_app:login' %}" method="GET">
+                    <input type="hidden" name="user" value="parent">
+                    <button type="submit" class="button">Parent</button>
+                </form>
+                <form action="{% url 'student_app:login' %}" method="GET">
+                    <input type="hidden" name="user" value="teacher">
+                    <button type="submit" class="button">Teacher</button>
+                </form>
+                <a href="#contact-us" class="button">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Welcome Section -->
+    <section class="welcome-section">
+        <h1>WELCOME TO BIG DATA UNIVERSITY, BENGALURU, INDIA</h1>
+        <p>BDA College is a premier institution offering top-tier education and resources for students, teachers, and parents to collaborate and excel.</p>
+    </section>
+
+    <!-- Image Section -->
+    <div class="main-content">
+        <img src="{% static 'images/IMG_4358.JPEG' %}" alt="Class Group Photo">
+    </div>
+
+    <!-- Latest News Section -->
+    <div class="news-container">
+        <h2>Latest News</h2>
+        <marquee behavior="scroll" direction="left" scrollamount="6">
+            <p>08 November 2024: End Semester Provisional Time Table November 2024</p>
+            <p>26 October 2024: Changes in Academic Calendar for Odd Semester of 2024-25</p>
+            <p>20 September 2024: Last Date For Document Verification For Students Admitted For the Academic Year 2024-25</p>
+            <p>20 October 2024: Fee Notice for 1st year UG and PG</p>
+        </marquee>
+    </div>
+
+    <!-- Meet Our Professors Section -->
+    <div class="professors-section">
+        <h1>Meet Our Professors</h1>
+        <div class="professors-grid">
+            <div class="professor-box">
+                <h3>Dr. Jayati Bhadra</h3>
+                <p>Associate Professor</p>
+            </div>
+            <div class="professor-box">
+                <h3>Dr. Sivakannan S</h3>
+                <p>Assistant Professor</p>
+            </div>
+            <div class="professor-box">
+                <h3>Mr. Francis Densil Raj V</h3>
+                <p>Assistant Professor</p>
+            </div>
+            <div class="professor-box">
+                <h3>Dr. Asha K</h3>
+                <p>Assistant Professor</p>
+            </div>
+            <div class="professor-box">
+                <h3>Ms. Jeshma Nishita Dsouza</h3>
+                <p>Assistant Professor</p>
+            </div>
+            <div class="professor-box">
+                <h3>Dr. Sanjay Dutta</h3>
+                <p>Assistant Professor</p>
+            </div>
+            <div class="professor-box">
+                <h3>Mr. Aaran Lawrence Dlima</h3>
+                <p>Teaching Assistant</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Us Section -->
+    <section id="contact-us" class="contact-section">
+        <h1>CONTACT US</h1>
+        <p>If you have any questions or inquiries, feel free to reach out to us!</p>
+        <form action="submit_contact.php" method="post">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h4>Contact</h4>
+            <p>Address<br>
+            Big Data University, 36 Lalbagh Road,<br>
+            Bengaluru-560027, Karnataka,<br>
+            India</p>
+            <p>Phone<br>
+            Reception: 08022274079</p>
+            <p>E-mail<br>
+            desk@sju.edu.in</p>
+        </div>
+        <div class="footer-bottom">
+            <p>All rights reserved © 2023 Big Data University, Bengaluru</p>
+        </div>
+    </footer>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .header-container {
+            background-color: #283593;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .button {
+            margin: 0 10px;
+            padding: 12px 20px;
+            background-color: #5c6bc0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .navbar .button:hover {
+            background-color: #7986cb;
+        }
+
+        .welcome-section {
+            text-align: center;
+            padding: 60px;
+            background-color: #f8f9fa;
+        }
+
+        .news-container {
+            padding: 30px;
+            background-color: #ffc107;
+            text-align: center;
+        }
+
+        .professors-section {
+            padding: 40px;
+            background-color: #1565c0;
+            color: white;
+            text-align: center;
+        }
+
+        .professors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .professor-box {
+            background-color: #1e88e5;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .contact-section {
+            padding: 30px;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+
+        .footer {
+            background-color: #283593;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .main-content {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .main-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .navbar .button {
+                margin: 5px;
+                padding: 10px;
+            }
+        }
+    </style>
+{% endblock content %}

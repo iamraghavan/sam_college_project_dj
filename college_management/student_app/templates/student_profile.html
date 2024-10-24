@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Student Profile
+{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f4f7;
+        margin: 0;
+        padding: 0;
+    }
+
+    .header {
+        background-color: #2c786c;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .student-profile {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+
+
+    .student-info {
+        flex: 1;
+    }
+
+    .student-info p {
+        margin: 10px 0;
+        font-size: 16px;
+        color: #333;
+    }
+
+    .student-info p strong {
+        color: #555;
+    }
+
+
+
+    h2 {
+        text-align: center;
+        color: #2c786c;
+        margin-bottom: 20px;
+    }
+
+    .back-button {
+        display: inline-block;
+        margin-bottom: 20px;
+        padding: 10px 20px;
+        background-color: #f05454;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .back-button:hover {
+        background-color: #d94747;
+    }
+
+    /* Responsive layout for smaller screens */
+    @media (max-width: 768px) {
+        .student-profile {
+            padding: 15px;
+        }
+
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
+        }
+
+        .student-info p {
+            font-size: 14px;
+        }
+
+        h2 {
+            font-size: 24px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .profile-container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-pic {
+            margin: 0 auto 20px;
+        }
+
+        .student-info p {
+            font-size: 13px;
+        }
+    }
+</style>
+<div class="student-profile">
+    <h2>Student Profile</h2>
+    <div class="profile-container"> <!-- Placeholder for profile picture -->
+        <div class="student-info">
+            <p><strong>Student ID:</strong> {{user.student.student_id}}</p>
+            <p><strong>Surname:</strong> {{user.student.surname}}</p>
+            <p><strong>Name:</strong> {{user.student.name}}</p>
+            <p><strong>Date of Birth:</strong> {{user.student.date_of_birth}}</p>
+            <p><strong>Email:</strong> {{user.student.email }}</p>
+            <p><strong>Course:</strong> {{user.student.course}}</p>
+            <p><strong>Previous Subjects:</strong> {{user.student.previous_subjects}}</p>
+            <p><strong>Extracurricular Activities:</strong>{{user.student.extracurricular_activities}}</p>
+            <p><strong>Gender:</strong> {{user.student.gender}}</p>
+            <p><strong>Father's Name:</strong> {{user.student.fathers_name}}</p>
+            <p><strong>Mother's Name:</strong> {{user.student.mothers_name}}</p>
+            <p><strong>Address:</strong> {{user.student.address}}</p>
+            <p><strong>Student Mobile Number:</strong> {{user.student.student_number}}</p>
+            <p><strong>Parent Mobile Number:</strong> {{user.student.parent_mobile_number}}</p>
+            <p><strong>Admission Date:</strong>{{user.student.admission_date}}</p>
+            <p><strong>Admission Quota:</strong> {{user.student.admission_quota}}</p>
+            <p><strong>Religion:</strong> {{user.student.religion}}</p>
+            <p><strong>Category:</strong> {{user.student.category}}</p>
+            <p><strong>Blood Group:</strong>{{user.student.blood_group}}</p>
+            <p><strong>Campus Type:</strong> {{user.student.campus_type}}</p>
+            <p><strong>Nationality:</strong> {{user.student.nationality}}</p>
+            <p><strong>State:</strong> {{user.student.state}}</p>
+            <p><strong>District:</strong> {{user.student.district}}</p>
+            <p><strong>Annual Income:</strong> {{user.student.annual_income}}</p>
+            <p><strong>Aadhar Number:</strong> {{user.student.aadhar_number}}</p>
+            <p><strong>Admission TC Number:</strong> {{user.student.admission_tc_number}}</p>
+            <p><strong>SSLC Percentage:</strong> {{user.student.sslc_percentage}}</p>
+            <p><strong>Plus 2 Percentage:</strong> {{user.student.plus_2_percentage}}</p>
+            <p><strong>UG Percentage:</strong> {{user.student.ug_percentage}}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,108 @@
+<!-- Teacher Dashboard (Updated with View Leave Status) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <style>
+        /* Same styles as before */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .dashboard {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 22%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+        }
+        .card h3 {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        button:hover {
+            background-color: #1a6690;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Teacher Dashboard</h1>
+    </div>
+    {% comment %} <div class="dashboard">
+        <div class="card">
+            <h3>Enter Attendance</h3>
+            <button onclick="window.location.href='enter_attendance.html'">Attendance</button>
+        </div>
+        <div class="card">
+            <h3>Manage Grades</h3>
+            <button onclick="window.location.href='marks_edit_page.html?role=teacher'">Manage Grades</button>
+        </div>
+        <div class="card">
+            <h3>Submit Leave Requests</h3>
+            <button onclick="window.location.href='teacher_leave_request.html'">Submit Request</button> <!-- Link to leave request form -->
+        </div>
+        <div class="card">
+            <h3>View Leave Status</h3>
+            <button onclick="window.location.href='teacher_leave_response.html'">Check Status</button> <!-- Link to leave request status page -->
+        </div>
+        <div class="card">
+            <h3>View Profile</h3>
+            <button onclick="window.location.href='view_teacher_profile.html'">Check Profile</button> <!-- Link to view teacher profile -->
+        </div>
+    </div> {% endcomment %}
+    <div class="dashboard">
+        <div class="card">
+            <h3>Enter Attendance</h3>
+            <a href="{%  url 'student_app:attendance_edit' %}" class="button">Attendance</a>
+        </div>
+        <div class="card">
+            <h3>Manage Grades</h3>
+            <a href="{% url 'student_app:marks_edit'%}" class="button">Manage Grades</a>
+        </div>
+        <div class="card">
+            <h3>Submit Leave Requests</h3>
+            <a href="{% url 'student_app:teacher_leave_request'%}" class="button">Submit Request</a> <!-- Link to leave request form -->
+        </div>
+        <div class="card">
+            <h3>View Leave Status</h3>
+            <a href="{% url 'student_app:teacher_leave_response'%}" class="button">Check Status</a> <!-- Link to leave request status page -->
+        </div>
+        <div class="card">
+            <h3>View Profile</h3>
+            <a href="{% url 'student_app:view_teacher_profile'%}" class="button">Check Profile</a> <!-- Link to view teacher profile -->
+        </div>
+    </div>
+    
+</body>
+</html>

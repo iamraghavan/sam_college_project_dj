@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Submit Leave Request{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+    }
+    .header {
+        background-color: #007bff;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    .content {
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        max-width: 600px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .content label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    .content input, .content textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+</style>
+    <div class="header">
+        <h1>Submit Leave Request</h1>
+    </div>
+    <div class="content">
+        <form action="./" method="POST"> <!-- Form action -->
+            {% csrf_token %}
+
+            <label for="name">Name:</label>
+            <textarea id="name" name="name" placeholder="Enter Name" required></textarea>
+
+            <label for="leave-reason">Leave Reason:</label>
+            <textarea id="leave-reason" name="leaveReason" placeholder="Enter Leave Reason" required></textarea>
+
+            <label for="leave-dates">Leave Dates:</label>
+            <input type="text" id="leave-dates" name="leaveDates" placeholder="Enter Leave Dates (e.g., 2024-10-15 to 2024-10-20)" required>
+
+            <button type="submit">Submit Request</button>
+        </form>
+        <h3>{{message}}</h3>
+    </div>
+
+{% endblock %}
+
+{% block extra_styles %}
+   
+{% endblock %}

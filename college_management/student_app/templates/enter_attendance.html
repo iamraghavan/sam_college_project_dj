@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+Enter Attendance
+{% endblock title %}
+
+{% block style %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 20px;
+    }
+    .header {
+        background-color: #3498db;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    .header h1 {
+        margin: 0;
+    }
+    .content {
+        max-width: 600px;
+        margin: 40px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .content label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    .content input, .content select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #218838;
+    }
+</style>
+{% endblock style %}
+
+{% block content %}
+<div class="header">
+    <h1>Enter Attendance</h1>
+</div>
+<div class="content">
+    <form id="enter-attendance-form" method="POST" action="{% url 'submit_attendance' %}">
+        {% csrf_token %}
+        
+        <label for="regNo">Register Number:</label>
+        <input type="text" id="regNo" name="regNo" placeholder="Enter Register No" required>
+
+        <label for="name">Student Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter Student Name" required>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="hours">Hours:</label>
+        <input type="number" id="hours" name="hours" placeholder="Enter Hours" required min="0" max="8">
+
+        <label for="attendance">Attendance Status:</label>
+        <select id="attendance" name="attendance" required>
+            <option value="present">Present</option>
+            <option value="absent">Absent</option>
+        </select>
+
+        <button type="submit">Submit Attendance</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('enter-attendance-form').addEventListener('submit', function(e) {
+        // Optional: you can handle the form submission via AJAX here if needed
+        // For now, we'll keep the original behavior
+
+        // You can comment out the alert if you handle submission in Django view
+        const regNo = document.getElementById('regNo').value;
+        const name = document.getElementById('name').value;
+        const date = document.getElementById('date').value;
+        const hours = document.getElementById('hours').value;
+        const attendanceStatus = document.getElementById('attendance').value;
+
+        alert(`Attendance for ${name} (Reg No: ${regNo}) has been entered for ${hours} hours on ${date}. Status: ${attendanceStatus}`);
+    });
+</script>
+{% endblock content %}

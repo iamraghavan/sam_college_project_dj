@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Student Dashboard{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url("{% static 'images/' %}"); /* Replace with your background image */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        margin: 0;
+        padding: 0;
+    }
+
+    .header {
+        background-color: rgba(52, 152, 219, 0.9); /* Semi-transparent to show background */
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .header h1 {
+        margin: 0;
+    }
+
+    .dashboard {
+        display: flex;
+        justify-content: space-around;
+        margin: 20px;
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+
+    .card {
+        background-color: rgba(255, 255, 255, 0.85); /* Slight transparency to show the background */
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        width: 22%;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin: 10px;
+    }
+
+    .card h3 {
+        margin-bottom: 15px;
+        font-size: 1.2em;
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #2980b9;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1em;
+    }
+
+    button:hover {
+        background-color: #1a6690;
+    }
+
+    @media (max-width: 768px) {
+        .card {
+            width: 45%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .card {
+            width: 90%;
+        }
+    }
+</style>
+
+<div class="header">
+    <h1>Student Dashboard</h1>
+</div>
+
+<div class="dashboard">
+    <div class="card">
+        <h3>View Profile</h3>
+        <button onclick="window.location.href='{% url 'student_app:student_profile' %}'">Profile</button>
+    </div>
+    <div class="card">
+        <h3>View Marks</h3>
+        <button onclick="window.location.href='{% url 'student_app:View_marks' %}'">Marks</button>
+    </div>
+    <div class="card">
+        <h3>View Attendance</h3>
+        <button onclick="window.location.href='{% url 'student_app:View_attendance' %}'">Attendance</button>
+    </div>
+    <div class="card">
+        <h3>Leave Requests</h3>
+        <button onclick="window.location.href='{% url 'student_app:student_leave_request_submission' %}'">Leave Request</button>
+    </div>
+    <div class="card">
+        <h3>Leave Status</h3>
+        <button onclick="window.location.href='{% url 'student_app:student_leave_status' %}'">Check Leave Status</button>
+    </div>
+</div>
+
+{% endblock %}

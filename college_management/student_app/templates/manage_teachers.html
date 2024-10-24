@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Manage Teachers{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+    }
+
+    .header {
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .content {
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .options {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    button {
+        flex: 1 1 45%; /* Adjust button size */
+        padding: 15px;
+        background-color: #007bff; /* Main button color */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background-color: #0056b3; /* Button hover color */
+    }
+</style>
+    <div class="header">
+        <h1>Manage Teachers</h1>
+    </div>
+    <div class="content">
+        <div class="options">
+            <a href="{% url 'student_app:manage_classes'%}">
+                <button>Manage Classes</button>
+            </a>
+        </div>
+    </div>
+
+    <div class="student-list" style="margin-top: 20px;">
+        {% for teacher in teachers %}
+            <div class="student-item" style="padding: 10px; border: 1px solid #ddd; border-radius: 5px; margin: 10px; background-color: #fff;">
+                <span style="font-weight: bold;">{{ teacher.name }}</span>
+            </div>
+        {% empty %}
+            <p style="text-align: center;">No teachers found.</p>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block extra_styles %}
+    
+{% endblock %}

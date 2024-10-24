@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Exam Application{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2>Exam Application</h2>
+
+        <!-- Form for Student to apply for an exam -->
+        <form id="exam-application-form" method="post" action="{% url 'submit_exam_application' %}"> <!-- Form submission action -->
+            {% csrf_token %}
+            <label for="exam-name">Exam Name</label>
+            <input type="text" id="exam-name" name="examName" placeholder="Enter exam name" required>
+
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Enter subject" required>
+
+            <label for="exam-date">Exam Date</label>
+            <input type="date" id="exam-date" name="examDate" required>
+
+            <label for="semester">Semester</label>
+            <select id="semester" name="semester" required>
+                <option value="">Select Semester</option>
+                <option value="1">Semester 1</option>
+                <option value="2">Semester 2</option>
+                <option value="3">Semester 3</option>
+                <option value="4">Semester 4</option>
+            </select>
+
+            <button type="submit">Submit Application</button>
+        </form>
+
+        <div class="success-message" id="success-message"></div>
+    </div>
+
+    <script>
+        document.getElementById('exam-application-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent page reload on form submit
+
+            // Simulate form submission and display a success message
+            document.getElementById('success-message').innerText = 'Your exam application has been submitted successfully!';
+            
+            // You can clear the form fields after submission or handle form data submission using backend
+            document.getElementById('exam-application-form').reset();
+        });
+    </script>
+{% endblock %}
+
+{% block extra_styles %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+        h2 {
+            color: #3498db;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-size: 1em;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        input, select {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            font-size: 1em;
+        }
+        button {
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .success-message {
+            margin-top: 20px;
+            color: green;
+            font-size: 1.1em;
+        }
+    </style>
+{% endblock %}

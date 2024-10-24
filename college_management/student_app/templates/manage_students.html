@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Manage Students{% endblock %}
+
+{% block content %}
+<div class="container" style="background-color: #f9f9f9; padding: 30px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
+    <h2 style="text-align: center; color: #4CAF50; font-family: Arial, sans-serif; font-weight: bold;">Manage Students</h2>
+    
+    <div class="actions" style="display: flex; justify-content: space-evenly; flex-wrap: wrap; margin-top: 20px;">
+        <button class="btn" style="background-color: #4CAF50; color: white; padding: 15px 25px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; margin: 10px;" 
+            onclick="window.location.href='{% url 'student_app:attendance_edit'%}'">Edit Attendance</button>
+
+        <button class="btn" style="background-color: #4CAF50; color: white; padding: 15px 25px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; margin: 10px;" 
+            onclick="window.location.href='{% url 'student_app:marks_edit'%}'">Edit Marks</button> <!-- Placeholder for general use -->
+    </div>
+
+    <h3 style="text-align: center; margin-top: 30px; color: #4CAF50;">Student List</h3>
+    <div class="student-list" style="margin-top: 20px;">
+        {% for student in students %}
+            <div class="student-item" style="padding: 10px; border: 1px solid #ddd; border-radius: 5px; margin: 10px; background-color: #fff;">
+                <span style="font-weight: bold;">{{ student.name }} (ID: {{ student.id }})</span>
+            </div>
+        {% empty %}
+            <p style="text-align: center;">No students found.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+
+
