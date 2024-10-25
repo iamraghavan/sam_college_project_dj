@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "student_app", # Your application
-    'college_management',
+    
 ]
 
 MIDDLEWARE = [
@@ -114,6 +114,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 
 # Default primary key field type
